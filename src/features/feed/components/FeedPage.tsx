@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import { Plus, Sparkles } from "lucide-react";
 import { EmptyState } from "@/components/ui/empty-state";
 import { Button } from "@/components/ui/button";
-import { APP_VERSION } from "@/lib/version";
+import { Logo } from "@/components/shared/Logo";
 import { useFeed, useToggleLike, useToggleSave } from "../hooks/useFeed";
 import { PostCard, PostCardSkeleton } from "./PostCard";
 import { CreatePostModal } from "./CreatePostModal";
@@ -41,13 +41,10 @@ export function FeedPage() {
   return (
     <>
       <header className="mb-5 flex items-center justify-between">
-        <h1 className="font-display text-h1 text-foreground">{t("nav.feed")}</h1>
-        <div className="flex items-center gap-3">
-          <span className="text-caption text-muted-foreground">v{APP_VERSION}</span>
-          <Button size="sm" onClick={() => setCreateOpen(true)}>
-            <Plus className="h-4 w-4" /> {t("nav.create")}
-          </Button>
-        </div>
+        <Logo />
+        <Button size="sm" onClick={() => setCreateOpen(true)}>
+          <Plus className="h-4 w-4" /> {t("nav.create")}
+        </Button>
       </header>
 
       {isLoading ? (

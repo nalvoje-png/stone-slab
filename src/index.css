@@ -9,45 +9,46 @@
 
 @layer base {
   :root {
-    /* Superfícies */
-    --background: 0 0% 100%;          /* #FFFFFF branco predominante */
-    --surface: 30 18% 96%;            /* #F6F4F1 bege-claro mármore */
-    --foreground: 218 60% 12%;        /* #0A1A33 ink azul-marinho do logo */
+    /* ===== TEMA ESCURO ===== */
+    /* Superfícies — grafite muito escuro (mais premium que preto puro) */
+    --background: 220 16% 7%;          /* #0E1116 fundo quase preto */
+    --surface: 220 14% 10%;            /* #14181F superfície atrás dos cards */
+    --foreground: 210 20% 96%;         /* #F1F3F6 texto claro */
 
-    --card: 0 0% 100%;
-    --card-foreground: 218 60% 12%;
+    --card: 220 14% 11%;               /* #161A22 cards */
+    --card-foreground: 210 20% 96%;
 
-    /* Marca — Azul Stone Slab (extraído do logo) */
-    --primary: 216 93% 48%;           /* #0864EB azul vivo do ícone */
+    /* Marca — Azul Stone Slab, levemente mais vivo para brilhar no escuro */
+    --primary: 217 96% 58%;            /* #2D7BF5 */
     --primary-foreground: 0 0% 100%;
-    --primary-soft: 218 92% 95%;      /* #E8F0FE fundo de seleção */
-    /* Gradiente da marca (topo -> base do ícone) */
-    --brand-from: 216 93% 48%;        /* #0864EB */
-    --brand-to: 216 91% 42%;          /* #0A58CD */
+    --primary-soft: 218 60% 16%;       /* azul escuro para fundos de seleção */
+    /* Gradiente da marca */
+    --brand-from: 217 96% 58%;         /* #2D7BF5 */
+    --brand-to: 216 91% 46%;           /* #0E63D6 */
 
-    --secondary: 33 17% 92%;          /* #F0EDE8 */
-    --secondary-foreground: 222 22% 11%;
+    --secondary: 220 12% 16%;          /* #21262F superfícies secundárias */
+    --secondary-foreground: 210 20% 96%;
 
-    --muted: 30 18% 96%;
-    --muted-foreground: 40 4% 52%;    /* #8A8782 */
+    --muted: 220 12% 14%;
+    --muted-foreground: 220 9% 60%;    /* #8E96A3 texto secundário */
 
-    --accent: 218 92% 95%;
-    --accent-foreground: 216 93% 48%;
+    --accent: 218 60% 16%;
+    --accent-foreground: 217 96% 70%;
 
-    /* Status — usados com parcimônia */
-    --success: 149 68% 38%;           /* #1FA45E */
-    --success-soft: 149 55% 93%;
-    --warning: 41 93% 45%;            /* #E0A107 */
-    --warning-soft: 41 80% 94%;
-    --destructive: 0 72% 53%;         /* #DC3535 */
-    --destructive-soft: 0 75% 96%;
+    /* Status — versões soft escuras */
+    --success: 149 60% 48%;            /* #31C46F mais luminoso no escuro */
+    --success-soft: 149 40% 16%;
+    --warning: 41 92% 55%;             /* #F0B829 */
+    --warning-soft: 41 50% 16%;
+    --destructive: 0 78% 62%;          /* #EC5252 */
+    --destructive-soft: 0 50% 18%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 33 13% 88%;             /* #E5E2DD */
-    --input: 33 13% 88%;
-    --ring: 216 93% 48%;
+    --border: 220 12% 18%;             /* #262C36 bordas sutis */
+    --input: 220 12% 18%;
+    --ring: 217 96% 58%;
 
-    --radius: 1rem;                   /* 16px = lg, base dos cards */
+    --radius: 1rem;                    /* 16px = lg, base dos cards */
   }
 
   * { @apply border-border; }
