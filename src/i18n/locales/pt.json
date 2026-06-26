@@ -1,0 +1,38 @@
+{
+  "app": { "name": "Stone Slab", "tagline": "A rede da indústria mundial de rochas ornamentais" },
+  "nav": {
+    "feed": "Início",
+    "explore": "Explorar",
+    "create": "Publicar",
+    "search": "Pesquisar",
+    "stones": "Pedras",
+    "notifications": "Notificações",
+    "profile": "Perfil"
+  },
+  "availability": {
+    "disponivel": "Disponível",
+    "reservado": "Reservado",
+    "vendido": "Vendido"
+  },
+  "auth": {
+    "loginTitle": "Entrar", "loginSubtitle": "Acesse sua conta para continuar",
+    "signupTitle": "Criar conta", "signupSubtitle": "Junte-se à comunidade global da pedra",
+    "email": "E-mail", "password": "Senha", "displayName": "Nome", "username": "Nome de usuário",
+    "company": "Empresa", "country": "País", "city": "Cidade", "accountType": "Qual o seu perfil?",
+    "login": "Entrar", "signup": "Criar conta", "noAccount": "Ainda não tem conta?",
+    "hasAccount": "Já tem conta?", "createOne": "Criar agora", "signinInstead": "Entrar",
+    "continue": "Continuar", "back": "Voltar", "loading": "Aguarde...",
+    "checkEmail": "Confira seu e-mail para confirmar a conta."
+  },
+  "accountType": {
+    "pedreira": "Pedreira", "serraria": "Serraria", "industria": "Indústria",
+    "marmoraria": "Marmoraria", "arquiteto": "Arquiteto", "designer": "Designer",
+    "comprador": "Comprador", "distribuidor": "Distribuidor"
+  },
+  "errors": {
+    "generic": "Algo deu errado. Tente novamente.",
+    "invalidCredentials": "E-mail ou senha incorretos.",
+    "usernameTaken": "Este nome de usuário já está em uso.",
+    "required": "Preencha este campo."
+  }
+}

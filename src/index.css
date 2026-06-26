@@ -1,0 +1,66 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================
+   STONE SLAB — Tema global (Design System aprovado)
+   Valores em HSL para suportar tema claro/escuro no futuro.
+   ============================================================ */
+
+@layer base {
+  :root {
+    /* Superfícies */
+    --background: 0 0% 100%;          /* #FFFFFF branco predominante */
+    --surface: 30 18% 96%;            /* #F6F4F1 bege-claro mármore */
+    --foreground: 218 60% 12%;        /* #0A1A33 ink azul-marinho do logo */
+
+    --card: 0 0% 100%;
+    --card-foreground: 218 60% 12%;
+
+    /* Marca — Azul Stone Slab (extraído do logo) */
+    --primary: 216 93% 48%;           /* #0864EB azul vivo do ícone */
+    --primary-foreground: 0 0% 100%;
+    --primary-soft: 218 92% 95%;      /* #E8F0FE fundo de seleção */
+    /* Gradiente da marca (topo -> base do ícone) */
+    --brand-from: 216 93% 48%;        /* #0864EB */
+    --brand-to: 216 91% 42%;          /* #0A58CD */
+
+    --secondary: 33 17% 92%;          /* #F0EDE8 */
+    --secondary-foreground: 222 22% 11%;
+
+    --muted: 30 18% 96%;
+    --muted-foreground: 40 4% 52%;    /* #8A8782 */
+
+    --accent: 218 92% 95%;
+    --accent-foreground: 216 93% 48%;
+
+    /* Status — usados com parcimônia */
+    --success: 149 68% 38%;           /* #1FA45E */
+    --success-soft: 149 55% 93%;
+    --warning: 41 93% 45%;            /* #E0A107 */
+    --warning-soft: 41 80% 94%;
+    --destructive: 0 72% 53%;         /* #DC3535 */
+    --destructive-soft: 0 75% 96%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 33 13% 88%;             /* #E5E2DD */
+    --input: 33 13% 88%;
+    --ring: 216 93% 48%;
+
+    --radius: 1rem;                   /* 16px = lg, base dos cards */
+  }
+
+  * { @apply border-border; }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}

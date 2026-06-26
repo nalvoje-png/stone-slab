@@ -1,0 +1,31 @@
+{
+  "app": { "name": "Stone Slab", "tagline": "The network for the global natural stone industry" },
+  "nav": {
+    "feed": "Home", "explore": "Explore", "create": "Post",
+    "search": "Search", "stones": "Stones", "notifications": "Alerts", "profile": "Profile"
+  },
+  "availability": {
+    "disponivel": "Available", "reservado": "Reserved", "vendido": "Sold"
+  },
+  "auth": {
+    "loginTitle": "Sign in", "loginSubtitle": "Access your account to continue",
+    "signupTitle": "Create account", "signupSubtitle": "Join the global stone community",
+    "email": "Email", "password": "Password", "displayName": "Name", "username": "Username",
+    "company": "Company", "country": "Country", "city": "City", "accountType": "What's your profile?",
+    "login": "Sign in", "signup": "Create account", "noAccount": "Don't have an account?",
+    "hasAccount": "Already have an account?", "createOne": "Create one", "signinInstead": "Sign in",
+    "continue": "Continue", "back": "Back", "loading": "Please wait...",
+    "checkEmail": "Check your email to confirm your account."
+  },
+  "accountType": {
+    "pedreira": "Quarry", "serraria": "Sawmill", "industria": "Industry",
+    "marmoraria": "Stone shop", "arquiteto": "Architect", "designer": "Designer",
+    "comprador": "Buyer", "distribuidor": "Distributor"
+  },
+  "errors": {
+    "generic": "Something went wrong. Please try again.",
+    "invalidCredentials": "Incorrect email or password.",
+    "usernameTaken": "This username is already taken.",
+    "required": "This field is required."
+  }
+}
