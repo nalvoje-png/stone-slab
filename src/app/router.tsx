@@ -3,7 +3,7 @@ import { LoginPage } from "@/features/auth/components/LoginPage";
 import { SignupPage } from "@/features/auth/components/SignupPage";
 import { ProtectedRoute } from "./ProtectedRoute";
 import { AppShell } from "@/components/layout/AppShell";
-import { FeedPlaceholder } from "@/features/feed/FeedPlaceholder";
+import { FeedPage } from "@/features/feed/components/FeedPage";
 
 function Protected({ children }: { children: React.ReactNode }) {
   return (
@@ -16,7 +16,7 @@ function Protected({ children }: { children: React.ReactNode }) {
 export const router = createBrowserRouter([
   { path: "/login", element: <LoginPage /> },
   { path: "/signup", element: <SignupPage /> },
-  { path: "/", element: <Protected><FeedPlaceholder /></Protected> },
-  // rotas futuras (explore, create, stones, notifications, profile) chegam nas próximas etapas
+  { path: "/", element: <Protected><FeedPage /></Protected> },
+  // rotas futuras (explore, stones, notifications, profile) nas próximas etapas
   { path: "*", element: <Navigate to="/" replace /> },
 ]);
