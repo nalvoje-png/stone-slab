@@ -9,8 +9,11 @@ const db = supabase as any;
 
 const PAGE_SIZE = 8;
 
-// URL pública de um arquivo do bucket post-media
+// URL pública de uma mídia. Se o caminho já for uma URL completa
+// (ex.: foto de exemplo do Unsplash), usa direto; senão, monta a URL
+// do bucket post-media do Storage.
 export function mediaUrl(path: string) {
+  if (path.startsWith("http://") || path.startsWith("https://")) return path;
   return supabase.storage.from("post-media").getPublicUrl(path).data.publicUrl;
 }
 

@@ -84,5 +84,18 @@
     "disponivel": "Available",
     "reservado": "Reserved",
     "vendido": "Sold"
+  },
+  "explore": {
+    "empty": "Nothing to explore yet",
+    "emptyDesc": "Posts will show up here."
+  },
+  "stone": {
+    "notFound": "Stone not found",
+    "notFoundDesc": "This stone isn't in the catalog.",
+    "post": "post",
+    "posts": "posts",
+    "emptyTitle": "No posts for this stone",
+    "emptyDesc": "Be the first to post.",
+    "indexDesc": "Explore each stone and see everything about it in one place."
   }
 }

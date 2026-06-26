@@ -84,5 +84,18 @@
     "disponivel": "Disponível",
     "reservado": "Reservado",
     "vendido": "Vendido"
+  },
+  "explore": {
+    "empty": "Nada para explorar ainda",
+    "emptyDesc": "As publicações aparecerão aqui."
+  },
+  "stone": {
+    "notFound": "Pedra não encontrada",
+    "notFoundDesc": "Esta pedra não existe no catálogo.",
+    "post": "publicação",
+    "posts": "publicações",
+    "emptyTitle": "Nenhuma publicação desta pedra",
+    "emptyDesc": "Seja o primeiro a publicar.",
+    "indexDesc": "Explore cada pedra e veja tudo sobre ela em um só lugar."
   }
 }
