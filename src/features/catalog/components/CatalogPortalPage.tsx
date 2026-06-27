@@ -1,17 +1,15 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { useTranslation } from "react-i18next";
-import { ArrowLeft, Lock, ShieldCheck, PackageOpen, Crown } from "lucide-react";
+import { ArrowLeft, Lock, ShieldCheck, Crown, PackageOpen, ChevronRight } from "lucide-react";
 import { EmptyState } from "@/components/ui/empty-state";
 import { Avatar } from "@/components/ui/avatar";
 import { flagEmoji, countryName } from "@/lib/country";
-import { mediaUrl } from "@/features/feed/api/feed.api";
-import {
-  fetchMyTier,
-  fetchCompanyProfile,
-  fetchCompanyPosts,
-} from "../api/catalog.api";
+import { fetchMyTier, fetchCompanyProfile } from "../api/catalog.api";
+import { browseMaterials, showroomMediaUrl } from "@/features/showroom/api/stock.api";
 
+// Showroom Digital — ambiente privado da empresa visto pelo comprador aprovado.
+// Mostra o ESTOQUE real (materiais → bandos → chapas), navegável.
 export function CatalogPortalPage() {
   const { companyId } = useParams<{ companyId: string }>();
   const { t, i18n } = useTranslation();
@@ -32,9 +30,9 @@ export function CatalogPortalPage() {
     enabled: Boolean(companyId) && hasAccess,
   });
 
-  const { data: posts = [], isLoading: loadingPosts } = useQuery({
-    queryKey: ["company-posts", companyId],
-    queryFn: () => fetchCompanyPosts(companyId!),
+  const { data: materials = [], isLoading: loadingMaterials } = useQuery({
+    queryKey: ["browse-materials", companyId],
+    queryFn: () => browseMaterials(companyId!),
     enabled: Boolean(companyId) && hasAccess,
   });
 
@@ -55,14 +53,14 @@ export function CatalogPortalPage() {
 
   const flag = flagEmoji(company?.country_code);
   const country = countryName(company?.country_code, lang);
-  const cover = posts[0]?.media_path;
+  const cover = materials.find((m) => m.cover_path)?.cover_path;
 
   return (
     <div className="-mx-4 lg:mx-0">
-      {/* Banner institucional do Showroom */}
-      <div className="relative mb-0 h-48 overflow-hidden bg-brand sm:h-60 lg:rounded-t-xl">
+      {/* Banner institucional */}
+      <div className="relative h-48 overflow-hidden bg-brand sm:h-60 lg:rounded-t-xl">
         {cover && (
-          <img src={mediaUrl(cover)} alt="" className="absolute inset-0 h-full w-full object-cover opacity-30" />
+          <img src={showroomMediaUrl(cover)} alt="" className="absolute inset-0 h-full w-full object-cover opacity-30" />
         )}
         <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
         <button
@@ -74,7 +72,7 @@ export function CatalogPortalPage() {
         </button>
       </div>
 
-      {/* Cabeçalho da empresa, sobreposto ao banner */}
+      {/* Cabeçalho da empresa */}
       <div className="relative -mt-12 px-4 lg:px-6">
         <div className="flex items-end gap-4">
           <Avatar src={company?.avatar_url} name={company?.display_name ?? ""} size="xl" className="ring-4 ring-background" />
@@ -89,11 +87,10 @@ export function CatalogPortalPage() {
           </div>
         </div>
 
-        {/* Selo do nível do usuário */}
         <div className="mt-4 flex flex-wrap items-center gap-2">
           <span className="inline-flex items-center gap-1.5 rounded-full bg-primary-soft px-3 py-1.5 text-[13px] font-medium text-primary">
             {tier?.is_owner ? <Crown className="h-4 w-4" /> : <ShieldCheck className="h-4 w-4" />}
-            {t("portal.yourLevel")}: {tier?.is_owner ? t("portal.owner") : tier?.tier_name}
+            {tier?.is_owner ? t("portal.owner") : t("catalog.partner")}
           </span>
         </div>
 
@@ -103,40 +100,40 @@ export function CatalogPortalPage() {
         </div>
       </div>
 
-      {/* Materiais */}
+      {/* Materiais do estoque */}
       <div className="mt-6 px-4 lg:px-6">
         <h2 className="mb-3 text-h3 text-foreground">{t("portal.materials")}</h2>
 
-        {loadingPosts ? (
-          <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
-            {Array.from({ length: 6 }).map((_, i) => (
-              <div key={i} className="aspect-square animate-pulse rounded-lg bg-secondary" />
-            ))}
+        {loadingMaterials ? (
+          <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
+            {Array.from({ length: 4 }).map((_, i) => <div key={i} className="aspect-[4/3] animate-pulse rounded-lg bg-secondary" />)}
           </div>
-        ) : posts.length === 0 ? (
+        ) : materials.length === 0 ? (
           <EmptyState icon={PackageOpen} title={t("portal.emptyTitle")} description={t("portal.emptyDesc")} />
         ) : (
-          <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
-            {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
-            {posts.map((p: any) => (
-              <div key={p.id} className="group overflow-hidden rounded-lg border border-border bg-card">
-                {p.media_path && (
-                  <div className="aspect-square overflow-hidden bg-secondary">
-                    <img src={mediaUrl(p.media_path)} alt={p.stone_name ?? ""} loading="lazy"
+          <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
+            {materials.map((m) => (
+              <button
+                key={m.id}
+                onClick={() => navigate(`/showroom/${companyId}/material/${m.id}`)}
+                className="group overflow-hidden rounded-xl border border-border bg-card text-left transition-transform active:scale-[0.98]"
+              >
+                <div className="aspect-[4/3] overflow-hidden bg-secondary">
+                  {m.cover_path ? (
+                    <img src={showroomMediaUrl(m.cover_path)} alt={m.name} loading="lazy"
                       className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
-                  </div>
-                )}
-                {p.stone_name && (
-                  <div className="px-2.5 py-2 text-[13px] font-medium text-foreground">{p.stone_name}</div>
-                )}
-              </div>
+                  ) : (
+                    <div className="flex h-full items-center justify-center"><PackageOpen className="h-8 w-8 text-muted-foreground" /></div>
+                  )}
+                </div>
+                <div className="flex items-center justify-between p-3">
+                  <span className="font-display text-[16px] font-500 text-foreground">{m.name}</span>
+                  <ChevronRight className="h-4 w-4 text-muted-foreground" />
+                </div>
+              </button>
             ))}
           </div>
         )}
-
-        <div className="mt-8 rounded-lg border border-dashed border-border p-5 text-center">
-          <p className="text-body text-muted-foreground">{t("portal.comingSoon")}</p>
-        </div>
       </div>
     </div>
   );

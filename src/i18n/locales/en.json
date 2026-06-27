@@ -198,5 +198,14 @@
       "reservada": "Reserved",
       "vendida": "Sold"
     }
+  },
+  "showroom": {
+    "backToShowroom": "Back to Showroom",
+    "chooseBundle": "Choose a bundle",
+    "bundle": "Bundle",
+    "noBundles": "No bundles available",
+    "noBundlesDesc": "This company hasn't added bundles for this material yet.",
+    "noSlabs": "No slabs available",
+    "noSlabsDesc": "This bundle has no slabs registered yet."
   }
 }

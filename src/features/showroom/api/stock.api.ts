@@ -115,3 +115,49 @@ export function showroomMediaUrl(path: string | null): string {
   if (path.startsWith("http")) return path;
   return db.storage.from("showroom-media").getPublicUrl(path).data.publicUrl;
 }
+
+// ===== LEITURA pelo comprador aprovado (Fatia 2) =====
+// As policies de RLS já garantem que só aprovados leem. Estas funções
+// são por empresa (companyId), para a navegação no Showroom.
+
+export async function browseMaterials(companyId: string): Promise<ShowroomMaterial[]> {
+  const { data, error } = await db
+    .from("showroom_materials")
+    .select("*")
+    .eq("company_id", companyId)
+    .order("name");
+  if (error) throw error;
+  return data ?? [];
+}
+
+export async function browseBundles(materialId: string): Promise<ShowroomBundle[]> {
+  const { data, error } = await db
+    .from("showroom_bundles")
+    .select("*")
+    .eq("material_id", materialId)
+    .order("created_at", { ascending: false });
+  if (error) throw error;
+  return data ?? [];
+}
+
+export async function browseSlabs(bundleId: string): Promise<ShowroomSlab[]> {
+  const { data, error } = await db
+    .from("showroom_slabs")
+    .select("*")
+    .eq("bundle_id", bundleId)
+    .order("code");
+  if (error) throw error;
+  return data ?? [];
+}
+
+export async function getMaterial(materialId: string): Promise<ShowroomMaterial | null> {
+  const { data, error } = await db.from("showroom_materials").select("*").eq("id", materialId).maybeSingle();
+  if (error) throw error;
+  return data;
+}
+
+export async function getBundle(bundleId: string): Promise<ShowroomBundle | null> {
+  const { data, error } = await db.from("showroom_bundles").select("*").eq("id", bundleId).maybeSingle();
+  if (error) throw error;
+  return data;
+}

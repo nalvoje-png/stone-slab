@@ -198,5 +198,14 @@
       "reservada": "Reservada",
       "vendida": "Vendida"
     }
+  },
+  "showroom": {
+    "backToShowroom": "Voltar ao Showroom",
+    "chooseBundle": "Escolha um bando",
+    "bundle": "Bando",
+    "noBundles": "Nenhum bando disponível",
+    "noBundlesDesc": "Esta empresa ainda não cadastrou bandos deste material.",
+    "noSlabs": "Nenhuma chapa disponível",
+    "noSlabsDesc": "Este bando ainda não tem chapas cadastradas."
   }
 }

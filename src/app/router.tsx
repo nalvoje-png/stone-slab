@@ -13,6 +13,8 @@ import { CatalogPortalPage } from "@/features/catalog/components/CatalogPortalPa
 import { StockMaterialsPage } from "@/features/showroom/components/StockMaterialsPage";
 import { StockMaterialPage } from "@/features/showroom/components/StockMaterialPage";
 import { StockBundlePage } from "@/features/showroom/components/StockBundlePage";
+import { ShowroomMaterialPage } from "@/features/showroom/components/ShowroomMaterialPage";
+import { ShowroomBundlePage } from "@/features/showroom/components/ShowroomBundlePage";
 
 function Protected({ children }: { children: React.ReactNode }) {
   return (
@@ -35,5 +37,7 @@ export const router = createBrowserRouter([
   { path: "/stock", element: <Protected><StockMaterialsPage /></Protected> },
   { path: "/stock/material/:materialId", element: <Protected><StockMaterialPage /></Protected> },
   { path: "/stock/bundle/:bundleId", element: <Protected><StockBundlePage /></Protected> },
+  { path: "/showroom/:companyId/material/:materialId", element: <Protected><ShowroomMaterialPage /></Protected> },
+  { path: "/showroom/:companyId/bundle/:bundleId", element: <Protected><ShowroomBundlePage /></Protected> },
   { path: "*", element: <Navigate to="/" replace /> },
 ]);
