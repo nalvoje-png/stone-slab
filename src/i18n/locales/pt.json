@@ -12,7 +12,8 @@
     "notifications": "Notificações",
     "profile": "Perfil",
     "requests": "Solicitações",
-    "myaccess": "Meus acessos"
+    "myaccess": "Meus acessos",
+    "stock": "Estoque"
   },
   "availability": {
     "disponivel": "Disponível",
@@ -152,5 +153,49 @@
     "stock": "Estoque (em breve)",
     "yourLevel": "Seu nível",
     "owner": "Proprietário"
+  },
+  "stock": {
+    "title": "Meu estoque",
+    "subtitle": "Gerencie seus materiais, bandos e chapas.",
+    "newMaterial": "Novo material",
+    "materialName": "Nome do material",
+    "coverPhoto": "Foto de capa",
+    "save": "Salvar",
+    "saving": "Salvando...",
+    "cancel": "Cancelar",
+    "delete": "Excluir",
+    "emptyTitle": "Nenhum material ainda",
+    "emptyDesc": "Cadastre seu primeiro material para começar.",
+    "confirmDeleteMaterial": "Excluir este material e todos os seus bandos?",
+    "backToMaterials": "Voltar aos materiais",
+    "bundles": "Bandos",
+    "newBundle": "Novo bando",
+    "bundle": "Bando",
+    "noBundles": "Nenhum bando ainda",
+    "noBundlesDesc": "Cadastre um bando (lote de produção).",
+    "confirmDeleteBundle": "Excluir este bando e suas chapas?",
+    "bundleNumber": "Nº do bando",
+    "thickness": "Espessura",
+    "finish": "Acabamento",
+    "finishPlaceholder": "Polido",
+    "priceSqm": "Preço por m²",
+    "priceSqft": "Preço por pé²",
+    "priceHint": "{{sqm}}/m² • {{sqft}}/pé² (preenchido automaticamente)",
+    "saveBundle": "Salvar bando",
+    "addSlabsAfter": "Depois de salvar, adicione as chapas deste bando.",
+    "addSlab": "Adicionar chapa",
+    "slabCode": "Código da chapa",
+    "length": "Comprimento",
+    "height": "Altura",
+    "slabPhoto": "Foto da chapa",
+    "noSlabs": "Nenhuma chapa ainda",
+    "noSlabsDesc": "Adicione as chapas deste bando com foto, código e medidas.",
+    "confirmDeleteSlab": "Excluir esta chapa?",
+    "noMeasures": "Sem medidas",
+    "status": {
+      "disponivel": "Disponível",
+      "reservada": "Reservada",
+      "vendida": "Vendida"
+    }
   }
 }

@@ -169,3 +169,39 @@ export interface MyTier {
   can_view_prices: boolean;
   can_reserve: boolean;
 }
+
+// ===== Estoque do Showroom (v1.1.12) =====
+export type SlabStatus = "disponivel" | "reservada" | "vendida";
+
+export interface ShowroomMaterial {
+  id: string;
+  company_id: string;
+  name: string;
+  cover_path: string | null;
+  description: string | null;
+  created_at: string;
+}
+
+export interface ShowroomBundle {
+  id: string;
+  material_id: string;
+  company_id: string;
+  bundle_number: string;
+  thickness: string | null;
+  finish: string | null;
+  price_sqm: number | null;
+  price_sqft: number | null;
+  created_at: string;
+}
+
+export interface ShowroomSlab {
+  id: string;
+  bundle_id: string;
+  company_id: string;
+  code: string;
+  photo_path: string | null;
+  length_m: number | null;
+  height_m: number | null;
+  status: SlabStatus;
+  created_at: string;
+}

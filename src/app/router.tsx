@@ -10,6 +10,9 @@ import { StonePage } from "@/features/stones/components/StonePage";
 import { IncomingRequestsPage } from "@/features/catalog/components/IncomingRequestsPage";
 import { MyAccessPage } from "@/features/catalog/components/MyAccessPage";
 import { CatalogPortalPage } from "@/features/catalog/components/CatalogPortalPage";
+import { StockMaterialsPage } from "@/features/showroom/components/StockMaterialsPage";
+import { StockMaterialPage } from "@/features/showroom/components/StockMaterialPage";
+import { StockBundlePage } from "@/features/showroom/components/StockBundlePage";
 
 function Protected({ children }: { children: React.ReactNode }) {
   return (
@@ -29,5 +32,8 @@ export const router = createBrowserRouter([
   { path: "/requests", element: <Protected><IncomingRequestsPage /></Protected> },
   { path: "/my-access", element: <Protected><MyAccessPage /></Protected> },
   { path: "/catalog/:companyId", element: <Protected><CatalogPortalPage /></Protected> },
+  { path: "/stock", element: <Protected><StockMaterialsPage /></Protected> },
+  { path: "/stock/material/:materialId", element: <Protected><StockMaterialPage /></Protected> },
+  { path: "/stock/bundle/:bundleId", element: <Protected><StockBundlePage /></Protected> },
   { path: "*", element: <Navigate to="/" replace /> },
 ]);

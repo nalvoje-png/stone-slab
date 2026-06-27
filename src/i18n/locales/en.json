@@ -12,7 +12,8 @@
     "notifications": "Alerts",
     "profile": "Profile",
     "requests": "Requests",
-    "myaccess": "My access"
+    "myaccess": "My access",
+    "stock": "Stock"
   },
   "availability": {
     "disponivel": "Available",
@@ -152,5 +153,49 @@
     "stock": "Stock (coming soon)",
     "yourLevel": "Your level",
     "owner": "Owner"
+  },
+  "stock": {
+    "title": "My stock",
+    "subtitle": "Manage your materials, bundles and slabs.",
+    "newMaterial": "New material",
+    "materialName": "Material name",
+    "coverPhoto": "Cover photo",
+    "save": "Save",
+    "saving": "Saving...",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "emptyTitle": "No materials yet",
+    "emptyDesc": "Add your first material to start.",
+    "confirmDeleteMaterial": "Delete this material and all its bundles?",
+    "backToMaterials": "Back to materials",
+    "bundles": "Bundles",
+    "newBundle": "New bundle",
+    "bundle": "Bundle",
+    "noBundles": "No bundles yet",
+    "noBundlesDesc": "Add a bundle (production lot).",
+    "confirmDeleteBundle": "Delete this bundle and its slabs?",
+    "bundleNumber": "Bundle no.",
+    "thickness": "Thickness",
+    "finish": "Finish",
+    "finishPlaceholder": "Polished",
+    "priceSqm": "Price per m²",
+    "priceSqft": "Price per ft²",
+    "priceHint": "{{sqm}}/m² • {{sqft}}/ft² (filled automatically)",
+    "saveBundle": "Save bundle",
+    "addSlabsAfter": "After saving, add this bundle's slabs.",
+    "addSlab": "Add slab",
+    "slabCode": "Slab code",
+    "length": "Length",
+    "height": "Height",
+    "slabPhoto": "Slab photo",
+    "noSlabs": "No slabs yet",
+    "noSlabsDesc": "Add this bundle's slabs with photo, code and measures.",
+    "confirmDeleteSlab": "Delete this slab?",
+    "noMeasures": "No measures",
+    "status": {
+      "disponivel": "Available",
+      "reservada": "Reserved",
+      "vendida": "Sold"
+    }
   }
 }
