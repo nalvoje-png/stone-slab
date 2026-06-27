@@ -8,7 +8,6 @@ import { Avatar } from "@/components/ui/avatar";
 import { AvailabilityBadge } from "@/components/ui/availability-badge";
 import { mediaUrl } from "../api/feed.api";
 import { PhotoViewer } from "./PhotoViewer";
-import { CatalogAccessButton } from "@/features/catalog/components/CatalogAccessButton";
 import { ShowroomAction } from "@/features/catalog/components/ShowroomAction";
 import type { FeedPost } from "@/types/database";
 
@@ -103,7 +102,7 @@ export function PostCard({ post, onToggleLike, onToggleSave }: PostCardProps) {
           <Share2 className="h-[26px] w-[26px] text-foreground" strokeWidth={1.7} />
         </button>
         <div className="ml-auto flex items-center gap-5">
-          <ShowroomAction companyId={post.author.id} />
+          <ShowroomAction companyId={post.author.id} originPostId={post.id} />
           <button onClick={() => onToggleSave(post)} className="group" aria-label="Salvar">
             <Bookmark
               className={cn(
@@ -138,11 +137,6 @@ export function PostCard({ post, onToggleLike, onToggleSave }: PostCardProps) {
           </div>
         )}
         <div className="mt-2 text-[12px] text-muted-foreground">{timeAgo(post.created_at, lang)}</div>
-
-        {/* Ponte comercial discreta — solicitar acesso ao catálogo da empresa */}
-        <div className="mt-3.5">
-          <CatalogAccessButton companyId={post.author.id} originPostId={post.id} />
-        </div>
       </div>
 
       {viewerOpen && photo && (

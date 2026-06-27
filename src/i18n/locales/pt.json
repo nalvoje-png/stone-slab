@@ -137,7 +137,9 @@
     "tierParceiro": "Parceiro",
     "tierVIP": "VIP",
     "changeTier": "Alterar nível",
-    "showroom": "Showroom"
+    "showroom": "Showroom",
+    "pendingShort": "Pendente",
+    "declinedShort": "Recusado"
   },
   "portal": {
     "noAccessTitle": "Acesso restrito",
