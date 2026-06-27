@@ -136,7 +136,8 @@
     "tierVisitante": "Visitor",
     "tierParceiro": "Partner",
     "tierVIP": "VIP",
-    "changeTier": "Change level"
+    "changeTier": "Change level",
+    "showroom": "Showroom"
   },
   "portal": {
     "noAccessTitle": "Restricted access",

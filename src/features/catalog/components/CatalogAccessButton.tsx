@@ -1,63 +1,38 @@
-import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
-import { useNavigate } from "react-router-dom";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useTranslation } from "react-i18next";
-import { Lock, Clock, X, BadgeCheck, ArrowRight } from "lucide-react";
+import { Lock, Clock, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useAuth } from "@/features/auth/hooks/useAuth";
-import { getMyRequestStatus, requestCatalogAccess } from "../api/catalog.api";
+import { requestCatalogAccess } from "../api/catalog.api";
+import { useAccessStatus } from "../hooks/useAccessStatus";
 
 interface CatalogAccessButtonProps {
   companyId: string;
   originPostId?: string;
 }
 
-// Botão discreto da ponte comercial. Reflete o estado da solicitação.
-// Aprovado: vira "Ver catálogo" + selo "Parceiro de negócio".
+// Botão "Solicitar acesso" abaixo da legenda.
+// NÃO mostra nada quando já é parceiro aprovado — nesse caso, o acesso
+// ao Showroom fica na linha de ações (ver ShowroomAction).
 export function CatalogAccessButton({ companyId, originPostId }: CatalogAccessButtonProps) {
   const { t } = useTranslation();
   const { user } = useAuth();
-  const navigate = useNavigate();
   const qc = useQueryClient();
-
-  if (user?.id === companyId) return null;
-
-  const key = ["catalog-status", companyId, user?.id];
-
-  const { data: request, isLoading } = useQuery({
-    queryKey: key,
-    enabled: Boolean(user?.id),
-    queryFn: () => getMyRequestStatus(companyId, user!.id),
-  });
+  const { isOwn, isLoading, request, isApproved } = useAccessStatus(companyId);
 
   const mutation = useMutation({
     mutationFn: () => requestCatalogAccess(companyId, user!.id, originPostId),
-    onSuccess: () => qc.invalidateQueries({ queryKey: key }),
+    onSuccess: () => qc.invalidateQueries({ queryKey: ["catalog-status", companyId, user?.id] }),
   });
+
+  // Não mostra no próprio post nem quando já é parceiro aprovado
+  if (isOwn || isApproved) return null;
 
   if (isLoading) {
     return <div className="h-10 w-full animate-pulse rounded-xl bg-secondary" />;
   }
 
-  // APROVADO — parceiro de negócio: selo + botão de acesso ao portal
-  if (request?.status === "aprovado") {
-    return (
-      <div className="space-y-2">
-        <div className="flex items-center gap-1.5 text-[12.5px] font-medium text-success">
-          <BadgeCheck className="h-4 w-4" />
-          {t("catalog.partner")}
-        </div>
-        <button
-          onClick={() => navigate(`/catalog/${companyId}`)}
-          className="flex h-11 w-full items-center justify-center gap-2 rounded-xl bg-primary text-[14px] font-semibold text-primary-foreground transition-colors hover:bg-primary/90"
-        >
-          {t("catalog.viewCatalog")}
-          <ArrowRight className="h-4 w-4" />
-        </button>
-      </div>
-    );
-  }
-
-  // PENDENTE ou RECUSADO — estado informativo
+  // Pendente ou recusado — estado informativo
   if (request) {
     const map = {
       pendente: { icon: Clock, label: t("catalog.pending"), cls: "bg-secondary text-muted-foreground" },
@@ -72,7 +47,7 @@ export function CatalogAccessButton({ companyId, originPostId }: CatalogAccessBu
     );
   }
 
-  // NÃO SOLICITOU
+  // Não solicitou ainda
   return (
     <button
       onClick={() => mutation.mutate()}

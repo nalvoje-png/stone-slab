@@ -9,6 +9,7 @@ import { AvailabilityBadge } from "@/components/ui/availability-badge";
 import { mediaUrl } from "../api/feed.api";
 import { PhotoViewer } from "./PhotoViewer";
 import { CatalogAccessButton } from "@/features/catalog/components/CatalogAccessButton";
+import { ShowroomAction } from "@/features/catalog/components/ShowroomAction";
 import type { FeedPost } from "@/types/database";
 
 interface PostCardProps {
@@ -101,15 +102,18 @@ export function PostCard({ post, onToggleLike, onToggleSave }: PostCardProps) {
         <button aria-label="Compartilhar">
           <Share2 className="h-[26px] w-[26px] text-foreground" strokeWidth={1.7} />
         </button>
-        <button onClick={() => onToggleSave(post)} className="group ml-auto" aria-label="Salvar">
-          <Bookmark
-            className={cn(
-              "h-[26px] w-[26px] text-foreground transition-all group-active:scale-110",
-              post.saved_by_me && "fill-foreground"
-            )}
-            strokeWidth={1.7}
-          />
-        </button>
+        <div className="ml-auto flex items-center gap-5">
+          <ShowroomAction companyId={post.author.id} />
+          <button onClick={() => onToggleSave(post)} className="group" aria-label="Salvar">
+            <Bookmark
+              className={cn(
+                "h-[26px] w-[26px] text-foreground transition-all group-active:scale-110",
+                post.saved_by_me && "fill-foreground"
+              )}
+              strokeWidth={1.7}
+            />
+          </button>
+        </div>
       </div>
 
       {post.likes_count > 0 && (
