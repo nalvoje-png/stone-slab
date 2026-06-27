@@ -1,10 +1,11 @@
-import { useEffect, useRef, useState, useCallback } from "react";
+import { useState } from "react";
 import { useTranslation } from "react-i18next";
-import { Plus, Sparkles } from "lucide-react";
+import { Plus, Bell, Sparkles } from "lucide-react";
 import { EmptyState } from "@/components/ui/empty-state";
 import { Button } from "@/components/ui/button";
 import { Logo } from "@/components/shared/Logo";
 import { useFeed, useToggleLike, useToggleSave } from "../hooks/useFeed";
+import { useInfiniteScroll } from "@/hooks/useInfiniteScroll";
 import { PostCard, PostCardSkeleton } from "./PostCard";
 import { CreatePostModal } from "./CreatePostModal";
 import type { FeedPost } from "@/types/database";
@@ -12,43 +13,41 @@ import type { FeedPost } from "@/types/database";
 export function FeedPage() {
   const { t } = useTranslation();
   const [createOpen, setCreateOpen] = useState(false);
-  const sentinel = useRef<HTMLDivElement>(null);
 
   const { data, isLoading, fetchNextPage, hasNextPage, isFetchingNextPage } = useFeed();
   const toggleLike = useToggleLike();
   const toggleSave = useToggleSave();
 
   const posts = data?.pages.flat() ?? [];
-
-  // Infinite scroll via IntersectionObserver
-  const onIntersect = useCallback(
-    (entries: IntersectionObserverEntry[]) => {
-      if (entries[0].isIntersecting && hasNextPage && !isFetchingNextPage) {
-        fetchNextPage();
-      }
-    },
-    [hasNextPage, isFetchingNextPage, fetchNextPage]
+  const sentinel = useInfiniteScroll(
+    () => hasNextPage && !isFetchingNextPage && fetchNextPage(),
+    Boolean(hasNextPage)
   );
-
-  useEffect(() => {
-    const el = sentinel.current;
-    if (!el) return;
-    const obs = new IntersectionObserver(onIntersect, { rootMargin: "400px" });
-    obs.observe(el);
-    return () => obs.disconnect();
-  }, [onIntersect]);
 
   return (
     <>
-      <header className="mb-5 flex items-center justify-between">
+      {/* Topo minimalista: logo + ações discretas */}
+      <header className="mb-3 flex items-center justify-between px-1">
         <Logo />
-        <Button size="sm" onClick={() => setCreateOpen(true)}>
-          <Plus className="h-4 w-4" /> {t("nav.create")}
-        </Button>
+        <div className="flex items-center gap-1">
+          <button
+            onClick={() => setCreateOpen(true)}
+            className="flex h-10 w-10 items-center justify-center rounded-full text-foreground transition-colors hover:bg-secondary"
+            aria-label={t("nav.create")}
+          >
+            <Plus className="h-6 w-6" strokeWidth={1.9} />
+          </button>
+          <button
+            className="flex h-10 w-10 items-center justify-center rounded-full text-foreground transition-colors hover:bg-secondary"
+            aria-label={t("nav.notifications")}
+          >
+            <Bell className="h-[22px] w-[22px]" strokeWidth={1.9} />
+          </button>
+        </div>
       </header>
 
       {isLoading ? (
-        <div className="space-y-5">
+        <div>
           <PostCardSkeleton />
           <PostCardSkeleton />
         </div>
@@ -64,7 +63,7 @@ export function FeedPage() {
           }
         />
       ) : (
-        <div className="space-y-5">
+        <div>
           {posts.map((post: FeedPost) => (
             <PostCard
               key={post.id}
@@ -73,12 +72,10 @@ export function FeedPage() {
               onToggleSave={(p) => toggleSave.mutate(p)}
             />
           ))}
-
           <div ref={sentinel} className="h-4" />
-
           {isFetchingNextPage && <PostCardSkeleton />}
           {!hasNextPage && posts.length > 0 && (
-            <p className="py-6 text-center text-caption text-muted-foreground">{t("feed.end")}</p>
+            <p className="py-8 text-center text-caption text-muted-foreground">{t("feed.end")}</p>
           )}
         </div>
       )}

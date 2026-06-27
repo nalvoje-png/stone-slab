@@ -28,7 +28,7 @@ export async function fetchFeed(page: number, userId: string): Promise<FeedPost[
     .select(`
       *,
       author:profiles!posts_author_id_fkey (
-        id, display_name, username, avatar_url, company_name, account_type, is_verified
+        id, display_name, username, avatar_url, company_name, account_type, is_verified, country_code
       ),
       media:post_media ( * ),
       post_stones ( stones ( * ) )

@@ -61,7 +61,9 @@
     "empty": "Your feed is empty",
     "emptyDesc": "Follow companies or post your first photo.",
     "end": "You're all caught up",
-    "loading": "Loading..."
+    "loading": "Loading...",
+    "like": "like",
+    "likes": "likes"
   },
   "create": {
     "title": "New post",

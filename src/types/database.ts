@@ -115,7 +115,7 @@ export interface Post {
 
 // Post com dados agregados para exibição no feed
 export interface FeedPost extends Post {
-  author: Pick<Profile, "id" | "display_name" | "username" | "avatar_url" | "company_name" | "account_type" | "is_verified">;
+  author: Pick<Profile, "id" | "display_name" | "username" | "avatar_url" | "company_name" | "account_type" | "is_verified" | "country_code">;
   media: PostMedia[];
   stones: Stone[];
   liked_by_me: boolean;

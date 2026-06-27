@@ -61,7 +61,9 @@
     "empty": "Seu feed está vazio",
     "emptyDesc": "Siga empresas ou publique a primeira foto.",
     "end": "Você chegou ao fim",
-    "loading": "Carregando..."
+    "loading": "Carregando...",
+    "like": "curtida",
+    "likes": "curtidas"
   },
   "create": {
     "title": "Nova publicação",
