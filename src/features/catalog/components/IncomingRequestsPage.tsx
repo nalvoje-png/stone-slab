@@ -7,6 +7,7 @@ import { Chip } from "@/components/ui/chip";
 import { flagEmoji, countryName } from "@/lib/country";
 import { timeAgo } from "@/lib/time";
 import { useIncomingRequests, useDecideRequest } from "../hooks/useRequests";
+import { TierSelector } from "./TierSelector";
 import type { CatalogRequestWithProfile, RequestStatus } from "@/types/database";
 
 const FILTERS: (RequestStatus | "todos")[] = ["pendente", "aprovado", "recusado", "todos"];
@@ -120,6 +121,9 @@ function RequestRow({
       ) : (
         <div className="mt-3">
           <StatusPill status={req.status} />
+          {req.status === "aprovado" && (
+            <TierSelector requestId={req.id} currentTierId={req.tier_id} />
+          )}
         </div>
       )}
     </div>

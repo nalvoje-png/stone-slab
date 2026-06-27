@@ -103,22 +103,24 @@
     "indexDesc": "Explore each stone and see everything about it in one place."
   },
   "catalog": {
-    "requestAccess": "Request catalog access",
+    "requestAccess": "Request access",
     "requesting": "Requesting...",
     "pending": "Request sent",
     "approved": "Access approved",
     "declined": "Access declined",
+    "partner": "Business partner",
+    "viewCatalog": "Enter Showroom",
     "incomingTitle": "Access requests",
-    "incomingDesc": "Buyers who requested access to your catalog.",
+    "incomingDesc": "Buyers who requested access to your Showroom.",
     "myAccessTitle": "My access",
-    "myAccessDesc": "Companies you requested catalog access from.",
+    "myAccessDesc": "Showrooms you requested access to.",
     "approve": "Approve",
     "decline": "Decline",
     "cancel": "Cancel",
     "noIncoming": "No requests",
     "noIncomingDesc": "When someone requests access, it shows here.",
     "noOutgoing": "No access yet",
-    "noOutgoingDesc": "Request catalog access from a company in the feed.",
+    "noOutgoingDesc": "Request access to a company's Showroom in the feed.",
     "filter": {
       "pendente": "Pending",
       "aprovado": "Approved",
@@ -130,17 +132,22 @@
       "aprovado": "Approved",
       "recusado": "Declined"
     },
-    "partner": "Business partner",
-    "viewCatalog": "View catalog"
+    "tier": "Access level",
+    "tierVisitante": "Visitor",
+    "tierParceiro": "Partner",
+    "tierVIP": "VIP",
+    "changeTier": "Change level"
   },
   "portal": {
     "noAccessTitle": "Restricted access",
-    "noAccessDesc": "You don't have approved access to this company's catalog yet.",
-    "privateNotice": "Private environment. Exclusive content for approved partners.",
+    "noAccessDesc": "You don't have approved access to this Showroom yet.",
+    "privateNotice": "Private Showroom. Exclusive content for approved partners.",
     "materials": "Materials",
     "emptyTitle": "No materials yet",
     "emptyDesc": "This company hasn't posted materials yet.",
     "comingSoon": "Coming soon: stock, thicknesses, finishes, prices and reservations.",
-    "stock": "Stock (coming soon)"
+    "stock": "Stock (coming soon)",
+    "yourLevel": "Your level",
+    "owner": "Owner"
   }
 }

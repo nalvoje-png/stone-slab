@@ -103,22 +103,24 @@
     "indexDesc": "Explore cada pedra e veja tudo sobre ela em um só lugar."
   },
   "catalog": {
-    "requestAccess": "Solicitar acesso ao catálogo",
+    "requestAccess": "Solicitar acesso",
     "requesting": "Solicitando...",
     "pending": "Solicitação enviada",
     "approved": "Acesso aprovado",
     "declined": "Acesso recusado",
-    "incomingTitle": "Solicitações recebidas",
-    "incomingDesc": "Compradores que pediram acesso ao seu catálogo.",
+    "partner": "Parceiro de negócio",
+    "viewCatalog": "Acessar Showroom",
+    "incomingTitle": "Solicitações de acesso",
+    "incomingDesc": "Compradores que pediram acesso ao seu Showroom.",
     "myAccessTitle": "Meus acessos",
-    "myAccessDesc": "Empresas a que você pediu acesso ao catálogo.",
+    "myAccessDesc": "Showrooms a que você solicitou acesso.",
     "approve": "Aprovar",
     "decline": "Recusar",
     "cancel": "Cancelar",
     "noIncoming": "Nenhuma solicitação",
     "noIncomingDesc": "Quando alguém pedir acesso, aparece aqui.",
     "noOutgoing": "Nenhum acesso ainda",
-    "noOutgoingDesc": "Solicite acesso ao catálogo de uma empresa no feed.",
+    "noOutgoingDesc": "Solicite acesso ao Showroom de uma empresa no feed.",
     "filter": {
       "pendente": "Pendentes",
       "aprovado": "Aprovados",
@@ -130,17 +132,22 @@
       "aprovado": "Aprovado",
       "recusado": "Recusado"
     },
-    "partner": "Parceiro de negócio",
-    "viewCatalog": "Ver catálogo"
+    "tier": "Nível de acesso",
+    "tierVisitante": "Visitante",
+    "tierParceiro": "Parceiro",
+    "tierVIP": "VIP",
+    "changeTier": "Alterar nível"
   },
   "portal": {
     "noAccessTitle": "Acesso restrito",
-    "noAccessDesc": "Você ainda não tem acesso aprovado ao catálogo desta empresa.",
-    "privateNotice": "Ambiente privado. Conteúdo exclusivo para parceiros aprovados.",
+    "noAccessDesc": "Você ainda não tem acesso aprovado a este Showroom.",
+    "privateNotice": "Showroom privado. Conteúdo exclusivo para parceiros aprovados.",
     "materials": "Materiais",
     "emptyTitle": "Nenhum material ainda",
     "emptyDesc": "Esta empresa ainda não publicou materiais.",
     "comingSoon": "Em breve: estoque, espessuras, acabamentos, preços e reservas.",
-    "stock": "Estoque (em breve)"
+    "stock": "Estoque (em breve)",
+    "yourLevel": "Seu nível",
+    "owner": "Proprietário"
   }
 }

@@ -132,6 +132,7 @@ export interface CatalogRequest {
   origin_post_id: string | null;
   status: RequestStatus;
   message: string | null;
+  tier_id: string | null;
   created_at: string;
   decided_at: string | null;
 }
@@ -140,4 +141,31 @@ export interface CatalogRequest {
 export interface CatalogRequestWithProfile extends CatalogRequest {
   requester?: Pick<Profile, "id" | "display_name" | "username" | "avatar_url" | "company_name" | "account_type" | "country_code" | "is_verified">;
   company?: Pick<Profile, "id" | "display_name" | "username" | "avatar_url" | "company_name" | "account_type" | "country_code" | "is_verified">;
+}
+
+// ===== Showroom — níveis de acesso (v1.1.9) =====
+export interface ShowroomTier {
+  id: string;
+  company_id: string;
+  name: string;
+  rank: number;
+  can_view_catalog: boolean;
+  can_view_availability: boolean;
+  can_view_stock: boolean;
+  can_view_prices: boolean;
+  can_reserve: boolean;
+  is_default: boolean;
+  created_at: string;
+}
+
+// Resultado da função my_showroom_tier
+export interface MyTier {
+  tier_id: string | null;
+  tier_name: string;
+  is_owner: boolean;
+  can_view_catalog: boolean;
+  can_view_availability: boolean;
+  can_view_stock: boolean;
+  can_view_prices: boolean;
+  can_reserve: boolean;
 }

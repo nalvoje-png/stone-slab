@@ -1,5 +1,5 @@
 import { supabase } from "@/lib/supabase";
-import type { CatalogRequest, CatalogRequestWithProfile, RequestStatus, Profile } from "@/types/database";
+import type { CatalogRequest, CatalogRequestWithProfile, RequestStatus, Profile, ShowroomTier, MyTier } from "@/types/database";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const db = supabase as any;
@@ -122,4 +122,32 @@ export async function fetchCompanyPosts(companyId: string) {
     likes_count: p.likes_count,
     stone_name: p.post_stones?.[0]?.stones?.name ?? null,
   }));
+}
+
+// ===== Níveis do Showroom (v1.1.9) =====
+
+// Nível e permissões do usuário atual num showroom (null se sem acesso).
+export async function fetchMyTier(companyId: string): Promise<MyTier | null> {
+  const { data, error } = await db.rpc("my_showroom_tier", { company: companyId });
+  if (error) throw error;
+  // a função retorna 0 ou 1 linha
+  const row = Array.isArray(data) ? data[0] : data;
+  return row ?? null;
+}
+
+// Lista os níveis de uma empresa (para a empresa gerir / escolher ao aprovar).
+export async function listCompanyTiers(companyId: string): Promise<ShowroomTier[]> {
+  const { data, error } = await db
+    .from("showroom_tiers")
+    .select("*")
+    .eq("company_id", companyId)
+    .order("rank", { ascending: true });
+  if (error) throw error;
+  return data ?? [];
+}
+
+// Define o nível de uma solicitação aprovada.
+export async function setRequestTier(requestId: string, tierId: string) {
+  const { error } = await db.from("catalog_requests").update({ tier_id: tierId }).eq("id", requestId);
+  if (error) throw error;
 }
