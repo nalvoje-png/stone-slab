@@ -9,6 +9,7 @@ import { StonesIndexPage } from "@/features/stones/components/StonesIndexPage";
 import { StonePage } from "@/features/stones/components/StonePage";
 import { IncomingRequestsPage } from "@/features/catalog/components/IncomingRequestsPage";
 import { MyAccessPage } from "@/features/catalog/components/MyAccessPage";
+import { CatalogPortalPage } from "@/features/catalog/components/CatalogPortalPage";
 
 function Protected({ children }: { children: React.ReactNode }) {
   return (
@@ -27,5 +28,6 @@ export const router = createBrowserRouter([
   { path: "/stones/:slug", element: <Protected><StonePage /></Protected> },
   { path: "/requests", element: <Protected><IncomingRequestsPage /></Protected> },
   { path: "/my-access", element: <Protected><MyAccessPage /></Protected> },
+  { path: "/catalog/:companyId", element: <Protected><CatalogPortalPage /></Protected> },
   { path: "*", element: <Navigate to="/" replace /> },
 ]);

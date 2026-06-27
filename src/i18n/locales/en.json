@@ -129,6 +129,18 @@
       "pendente": "Pending",
       "aprovado": "Approved",
       "recusado": "Declined"
-    }
+    },
+    "partner": "Business partner",
+    "viewCatalog": "View catalog"
+  },
+  "portal": {
+    "noAccessTitle": "Restricted access",
+    "noAccessDesc": "You don't have approved access to this company's catalog yet.",
+    "privateNotice": "Private environment. Exclusive content for approved partners.",
+    "materials": "Materials",
+    "emptyTitle": "No materials yet",
+    "emptyDesc": "This company hasn't posted materials yet.",
+    "comingSoon": "Coming soon: stock, thicknesses, finishes, prices and reservations.",
+    "stock": "Stock (coming soon)"
   }
 }

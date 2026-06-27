@@ -129,6 +129,18 @@
       "pendente": "Pendente",
       "aprovado": "Aprovado",
       "recusado": "Recusado"
-    }
+    },
+    "partner": "Parceiro de negócio",
+    "viewCatalog": "Ver catálogo"
+  },
+  "portal": {
+    "noAccessTitle": "Acesso restrito",
+    "noAccessDesc": "Você ainda não tem acesso aprovado ao catálogo desta empresa.",
+    "privateNotice": "Ambiente privado. Conteúdo exclusivo para parceiros aprovados.",
+    "materials": "Materiais",
+    "emptyTitle": "Nenhum material ainda",
+    "emptyDesc": "Esta empresa ainda não publicou materiais.",
+    "comingSoon": "Em breve: estoque, espessuras, acabamentos, preços e reservas.",
+    "stock": "Estoque (em breve)"
   }
 }

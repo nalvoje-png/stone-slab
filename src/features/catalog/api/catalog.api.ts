@@ -1,5 +1,5 @@
 import { supabase } from "@/lib/supabase";
-import type { CatalogRequest, CatalogRequestWithProfile, RequestStatus } from "@/types/database";
+import type { CatalogRequest, CatalogRequestWithProfile, RequestStatus, Profile } from "@/types/database";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const db = supabase as any;
@@ -85,4 +85,41 @@ export async function decideRequest(requestId: string, status: "aprovado" | "rec
     .update({ status })
     .eq("id", requestId);
   if (error) throw error;
+}
+
+// ===== Portal privado (v1.1.8) =====
+
+// Verifica, de forma segura, se o usuário tem acesso aprovado ao catálogo.
+export async function checkCatalogAccess(companyId: string): Promise<boolean> {
+  const { data, error } = await db.rpc("has_catalog_access", { company: companyId });
+  if (error) throw error;
+  return Boolean(data);
+}
+
+// Dados públicos da empresa, para o cabeçalho do portal.
+export async function fetchCompanyProfile(companyId: string): Promise<Profile | null> {
+  const { data, error } = await db.from("profiles").select("*").eq("id", companyId).maybeSingle();
+  if (error) throw error;
+  return data;
+}
+
+// Publicações da empresa, exibidas no portal privado.
+export async function fetchCompanyPosts(companyId: string) {
+  const { data, error } = await db
+    .from("posts")
+    .select(`*, media:post_media ( storage_path, position ), post_stones ( stones ( name, slug ) )`)
+    .eq("author_id", companyId)
+    .order("created_at", { ascending: false });
+  if (error) throw error;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  return (data ?? []).map((p: any) => ({
+    id: p.id,
+    media_path: (p.media ?? []).sort(
+      (a: { position: number }, b: { position: number }) => a.position - b.position
+    )[0]?.storage_path ?? null,
+    caption: p.caption,
+    availability: p.availability,
+    likes_count: p.likes_count,
+    stone_name: p.post_stones?.[0]?.stones?.name ?? null,
+  }));
 }
