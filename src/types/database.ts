@@ -121,3 +121,23 @@ export interface FeedPost extends Post {
   liked_by_me: boolean;
   saved_by_me: boolean;
 }
+
+// ===== Solicitações de acesso ao catálogo (v1.1.7) =====
+export type RequestStatus = "pendente" | "aprovado" | "recusado";
+
+export interface CatalogRequest {
+  id: string;
+  requester_id: string;
+  company_id: string;
+  origin_post_id: string | null;
+  status: RequestStatus;
+  message: string | null;
+  created_at: string;
+  decided_at: string | null;
+}
+
+// Solicitação com dados do outro lado, para exibir nas listas
+export interface CatalogRequestWithProfile extends CatalogRequest {
+  requester?: Pick<Profile, "id" | "display_name" | "username" | "avatar_url" | "company_name" | "account_type" | "country_code" | "is_verified">;
+  company?: Pick<Profile, "id" | "display_name" | "username" | "avatar_url" | "company_name" | "account_type" | "country_code" | "is_verified">;
+}

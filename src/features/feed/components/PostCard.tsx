@@ -8,6 +8,7 @@ import { Avatar } from "@/components/ui/avatar";
 import { AvailabilityBadge } from "@/components/ui/availability-badge";
 import { mediaUrl } from "../api/feed.api";
 import { PhotoViewer } from "./PhotoViewer";
+import { CatalogAccessButton } from "@/features/catalog/components/CatalogAccessButton";
 import type { FeedPost } from "@/types/database";
 
 interface PostCardProps {
@@ -133,6 +134,11 @@ export function PostCard({ post, onToggleLike, onToggleSave }: PostCardProps) {
           </div>
         )}
         <div className="mt-2 text-[12px] text-muted-foreground">{timeAgo(post.created_at, lang)}</div>
+
+        {/* Ponte comercial discreta — solicitar acesso ao catálogo da empresa */}
+        <div className="mt-3.5">
+          <CatalogAccessButton companyId={post.author.id} originPostId={post.id} />
+        </div>
       </div>
 
       {viewerOpen && photo && (

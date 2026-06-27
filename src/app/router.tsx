@@ -7,6 +7,8 @@ import { FeedPage } from "@/features/feed/components/FeedPage";
 import { ExplorePage } from "@/features/stones/components/ExplorePage";
 import { StonesIndexPage } from "@/features/stones/components/StonesIndexPage";
 import { StonePage } from "@/features/stones/components/StonePage";
+import { IncomingRequestsPage } from "@/features/catalog/components/IncomingRequestsPage";
+import { MyAccessPage } from "@/features/catalog/components/MyAccessPage";
 
 function Protected({ children }: { children: React.ReactNode }) {
   return (
@@ -23,5 +25,7 @@ export const router = createBrowserRouter([
   { path: "/explore", element: <Protected><ExplorePage /></Protected> },
   { path: "/stones", element: <Protected><StonesIndexPage /></Protected> },
   { path: "/stones/:slug", element: <Protected><StonePage /></Protected> },
+  { path: "/requests", element: <Protected><IncomingRequestsPage /></Protected> },
+  { path: "/my-access", element: <Protected><MyAccessPage /></Protected> },
   { path: "*", element: <Navigate to="/" replace /> },
 ]);

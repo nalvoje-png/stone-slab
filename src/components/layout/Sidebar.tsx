@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { Home, Compass, PlusSquare, Gem, Bell, User, type LucideIcon } from "lucide-react";
+import { Home, Compass, PlusSquare, Gem, Bell, User, Inbox, type LucideIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Logo } from "@/components/shared/Logo";
 import { APP_VERSION } from "@/lib/version";
@@ -32,6 +32,9 @@ export function Sidebar({ onCreate }: { onCreate?: () => void }) {
 
         <NavLink to="/stones" className={navClass}>
           {({ isActive }) => <Row icon={Gem} label={t("nav.stones")} active={isActive} />}
+        </NavLink>
+        <NavLink to="/requests" className={navClass}>
+          {({ isActive }) => <Row icon={Inbox} label={t("nav.requests")} active={isActive} />}
         </NavLink>
         <NavLink to="/notifications" className={navClass}>
           {({ isActive }) => <Row icon={Bell} label={t("nav.notifications")} active={isActive} />}

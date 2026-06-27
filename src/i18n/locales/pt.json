@@ -10,7 +10,9 @@
     "search": "Pesquisar",
     "stones": "Pedras",
     "notifications": "Notificações",
-    "profile": "Perfil"
+    "profile": "Perfil",
+    "requests": "Solicitações",
+    "myaccess": "Meus acessos"
   },
   "availability": {
     "disponivel": "Disponível",
@@ -99,5 +101,34 @@
     "emptyTitle": "Nenhuma publicação desta pedra",
     "emptyDesc": "Seja o primeiro a publicar.",
     "indexDesc": "Explore cada pedra e veja tudo sobre ela em um só lugar."
+  },
+  "catalog": {
+    "requestAccess": "Solicitar acesso ao catálogo",
+    "requesting": "Solicitando...",
+    "pending": "Solicitação enviada",
+    "approved": "Acesso aprovado",
+    "declined": "Acesso recusado",
+    "incomingTitle": "Solicitações recebidas",
+    "incomingDesc": "Compradores que pediram acesso ao seu catálogo.",
+    "myAccessTitle": "Meus acessos",
+    "myAccessDesc": "Empresas a que você pediu acesso ao catálogo.",
+    "approve": "Aprovar",
+    "decline": "Recusar",
+    "cancel": "Cancelar",
+    "noIncoming": "Nenhuma solicitação",
+    "noIncomingDesc": "Quando alguém pedir acesso, aparece aqui.",
+    "noOutgoing": "Nenhum acesso ainda",
+    "noOutgoingDesc": "Solicite acesso ao catálogo de uma empresa no feed.",
+    "filter": {
+      "pendente": "Pendentes",
+      "aprovado": "Aprovados",
+      "recusado": "Recusados",
+      "todos": "Todos"
+    },
+    "status": {
+      "pendente": "Pendente",
+      "aprovado": "Aprovado",
+      "recusado": "Recusado"
+    }
   }
 }

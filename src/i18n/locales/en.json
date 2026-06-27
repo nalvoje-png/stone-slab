@@ -10,7 +10,9 @@
     "search": "Search",
     "stones": "Stones",
     "notifications": "Alerts",
-    "profile": "Profile"
+    "profile": "Profile",
+    "requests": "Requests",
+    "myaccess": "My access"
   },
   "availability": {
     "disponivel": "Available",
@@ -99,5 +101,34 @@
     "emptyTitle": "No posts for this stone",
     "emptyDesc": "Be the first to post.",
     "indexDesc": "Explore each stone and see everything about it in one place."
+  },
+  "catalog": {
+    "requestAccess": "Request catalog access",
+    "requesting": "Requesting...",
+    "pending": "Request sent",
+    "approved": "Access approved",
+    "declined": "Access declined",
+    "incomingTitle": "Access requests",
+    "incomingDesc": "Buyers who requested access to your catalog.",
+    "myAccessTitle": "My access",
+    "myAccessDesc": "Companies you requested catalog access from.",
+    "approve": "Approve",
+    "decline": "Decline",
+    "cancel": "Cancel",
+    "noIncoming": "No requests",
+    "noIncomingDesc": "When someone requests access, it shows here.",
+    "noOutgoing": "No access yet",
+    "noOutgoingDesc": "Request catalog access from a company in the feed.",
+    "filter": {
+      "pendente": "Pending",
+      "aprovado": "Approved",
+      "recusado": "Declined",
+      "todos": "All"
+    },
+    "status": {
+      "pendente": "Pending",
+      "aprovado": "Approved",
+      "recusado": "Declined"
+    }
   }
 }
