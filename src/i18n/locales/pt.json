@@ -13,7 +13,8 @@
     "profile": "Perfil",
     "requests": "Solicitações",
     "myaccess": "Meus acessos",
-    "stock": "Estoque"
+    "stock": "Estoque",
+    "signOut": "Sair"
   },
   "availability": {
     "disponivel": "Disponível",

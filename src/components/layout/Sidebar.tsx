@@ -1,6 +1,8 @@
 import { NavLink } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { Home, Compass, PlusSquare, Gem, Bell, User, Inbox, Boxes, type LucideIcon } from "lucide-react";
+import { Home, Compass, PlusSquare, Gem, Bell, User, Inbox, Boxes, LogOut, type LucideIcon } from "lucide-react";
+import { useNavigate } from "react-router-dom";
+import { signOut } from "@/features/auth/api/auth.api";
 import { cn } from "@/lib/utils";
 import { Logo } from "@/components/shared/Logo";
 import { APP_VERSION } from "@/lib/version";
@@ -10,6 +12,12 @@ import { APP_VERSION } from "@/lib/version";
 
 export function Sidebar({ onCreate }: { onCreate?: () => void }) {
   const { t } = useTranslation();
+  const navigate = useNavigate();
+
+  async function handleSignOut() {
+    await signOut();
+    navigate("/login", { replace: true });
+  }
   return (
     <aside className="fixed inset-y-0 left-0 hidden w-64 flex-col border-r border-border bg-background px-4 py-6 lg:flex">
       <div className="px-3">
@@ -47,7 +55,16 @@ export function Sidebar({ onCreate }: { onCreate?: () => void }) {
         </NavLink>
       </nav>
 
-      <div className="mt-auto px-3 pt-4 text-caption text-muted-foreground">v{APP_VERSION}</div>
+      <div className="mt-auto">
+        <button
+          onClick={handleSignOut}
+          className="flex w-full items-center gap-3 rounded-md px-3 py-2.5 text-body font-medium text-muted-foreground transition-colors hover:bg-secondary hover:text-destructive"
+        >
+          <LogOut className="h-5 w-5" strokeWidth={2} />
+          {t("nav.signOut")}
+        </button>
+        <div className="px-3 pt-3 text-caption text-muted-foreground">v{APP_VERSION}</div>
+      </div>
     </aside>
   );
 }

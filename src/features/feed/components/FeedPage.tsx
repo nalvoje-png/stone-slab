@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
-import { Plus, Bell, Sparkles } from "lucide-react";
+import { Plus, Bell, Sparkles, LogOut } from "lucide-react";
+import { useNavigate } from "react-router-dom";
+import { signOut } from "@/features/auth/api/auth.api";
 import { EmptyState } from "@/components/ui/empty-state";
 import { Button } from "@/components/ui/button";
 import { Logo } from "@/components/shared/Logo";
@@ -13,6 +15,12 @@ import type { FeedPost } from "@/types/database";
 export function FeedPage() {
   const { t } = useTranslation();
   const [createOpen, setCreateOpen] = useState(false);
+  const navigate = useNavigate();
+
+  async function handleSignOut() {
+    await signOut();
+    navigate("/login", { replace: true });
+  }
 
   const { data, isLoading, fetchNextPage, hasNextPage, isFetchingNextPage } = useFeed();
   const toggleLike = useToggleLike();
@@ -42,6 +50,13 @@ export function FeedPage() {
             aria-label={t("nav.notifications")}
           >
             <Bell className="h-[22px] w-[22px]" strokeWidth={1.9} />
+          </button>
+          <button
+            onClick={handleSignOut}
+            className="flex h-10 w-10 items-center justify-center rounded-full text-foreground transition-colors hover:bg-secondary hover:text-destructive lg:hidden"
+            aria-label={t("nav.signOut")}
+          >
+            <LogOut className="h-[21px] w-[21px]" strokeWidth={1.9} />
           </button>
         </div>
       </header>
