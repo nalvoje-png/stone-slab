@@ -47,6 +47,7 @@ export function StockBundlePage() {
   const [heightM, setHeightM] = useState("");
   const [photo, setPhoto] = useState<File | null>(null);
   const [saving, setSaving] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const priceSqm = bundle?.price_sqm ?? null;
 
@@ -58,6 +59,7 @@ export function StockBundlePage() {
   async function handleAddSlab() {
     if (!code.trim()) return;
     setSaving(true);
+    setError(null);
     try {
       let photoPath: string | undefined;
       if (photo) photoPath = await uploadShowroomPhoto(photo, user!.id);
@@ -70,6 +72,9 @@ export function StockBundlePage() {
         height_m: heightM ? parseFloat(heightM) : undefined,
       });
       setCode(""); setLengthM(""); setHeightM(""); setPhoto(null);
+    } catch (e) {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      setError((e as any)?.message ?? String(e));
     } finally {
       setSaving(false);
     }
@@ -125,6 +130,12 @@ export function StockBundlePage() {
             <div className="mb-3 rounded-md bg-success-soft px-3 py-2.5 text-[12.5px] text-success">
               {fmtSqm(previewSqm)} • {fmtSqft(sqmToSqft(previewSqm))}
               {previewValue != null && ` • ${usd(previewValue)}`}
+            </div>
+          )}
+
+          {error && (
+            <div className="mb-3 rounded-md bg-destructive-soft px-3 py-2.5 text-[12.5px] text-destructive">
+              {error}
             </div>
           )}
 

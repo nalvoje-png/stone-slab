@@ -146,7 +146,7 @@
   "portal": {
     "noAccessTitle": "Restricted access",
     "noAccessDesc": "You don't have approved access to this Showroom yet.",
-    "privateNotice": "Private Showroom. Exclusive content for approved partners.",
+    "privateNotice": "You have access to this company's private Showroom.",
     "materials": "Materials",
     "emptyTitle": "No materials yet",
     "emptyDesc": "This company hasn't posted materials yet.",
